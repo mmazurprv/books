@@ -7,8 +7,8 @@ export default function Menu() {
       <p className="w-full">Menu - Books &amp; Magazines</p>
       <div className="flex flex-row gap-10 justify-center text-black">
         <Link href="/">Main</Link>
-        <Link href="/books-data-view">Books</Link>
-        <Link href="/magazines-data-view">Magazines</Link>
+        <Link href="/books-data">Books</Link>
+        <Link href="/magazines-data">Magazines</Link>
       </div>
     </div>
   );
