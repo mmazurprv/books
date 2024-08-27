@@ -12,46 +12,49 @@ import {
 // Define the Book type
 type Book = {
   id: number;
-  author_id: number;
   title: string;
-  published_date: Date | null;
   genre: string;
+  name: string;
+  surname: string;
 };
+// published_date: Date | null;
 
 // Function to fetch books from the database
 async function fetchBooks(): Promise<Book[]> {
-  const books = await client<Book[]>`SELECT * FROM book`;
+  const books = await client<Book[]>`SELECT
+         book.id,
+         book.title,
+         book.genre,
+         author.name,
+         author.surname
+  from book LEFT JOIN author ON book.author_id = author.id`;
   return books;
 }
 
 // Component to display books in a Shadcn table
 export default async function Home() {
   const books = await fetchBooks();
+  // console.log(books);
 
   return (
     <Table>
-      <TableCaption>A list of books</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead className="w-[100px]">ID</TableHead>
-          <TableHead>Author ID</TableHead>
+          <TableHead>Author </TableHead>
           <TableHead>Title</TableHead>
-          <TableHead>Published Date</TableHead>
           <TableHead>Genre</TableHead>
+          <TableHead>Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {books.map((book) => (
           <TableRow key={book.id}>
             <TableCell className="font-medium">{book.id}</TableCell>
-            <TableCell>{book.author_id}</TableCell>
+            <TableCell>{book.name + " " + book.surname}</TableCell>
             <TableCell>{book.title}</TableCell>
-            <TableCell>
-              {book.published_date
-                ? new Date(book.published_date).toDateString()
-                : "N/A"}
-            </TableCell>
             <TableCell>{book.genre}</TableCell>
+            <TableCell>{}</TableCell>
           </TableRow>
         ))}
       </TableBody>
