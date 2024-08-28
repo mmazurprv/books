@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link"; // Import the Link component for client-side navigation
 import { client } from "@/lib/db/postgres";
+
 import {
   Table,
   TableBody,
@@ -50,8 +51,8 @@ export default async function Home() {
     <div>
       {/* Add Book button wrapped in Link component for navigation */}
 
-      <Link href="/add-books">
-        <Button variant="outline" type="button">
+      <Link href="/add-books" className="w-12 items-center">
+        <Button variant="secondary" type="button" className="p-5">
           Add Book
         </Button>
       </Link>

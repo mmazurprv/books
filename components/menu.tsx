@@ -10,6 +10,7 @@ export default function Menu() {
         <Link href="/authors-data">Authors</Link>
         <Link href="/books-data">Books</Link>
         <Link href="/magazines-data">Magazines</Link>
+        <Link href="/">Tags</Link>
       </div>
     </div>
   );
