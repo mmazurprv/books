@@ -43,8 +43,8 @@ export default async function Home() {
         {magazines.map((magazine) => (
           <TableRow key={magazine.id}>
             <TableCell className="font-medium">{magazine.id}</TableCell>
-            <TableCell>{magazine.author_id}</TableCell>
-            <TableCell>{magazine.title}</TableCell>
+            <TableCell>{magazine.magazine_title_id}</TableCell>
+            <TableCell>{magazine.genre}</TableCell>
             <TableCell>
               {magazine.published_date
                 ? new Date(magazine.published_date).toDateString()
